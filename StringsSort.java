@@ -51,16 +51,14 @@ public class StringsSort {
                     }
                 } else {
                     if (line.isEmpty()) continue;
-                        if (temp.isEmpty()) {
-                            temp.add(line);
-                        } else {
-                            if (temp.get(temp.size() - 1).compareTo(line) * switchOrder > 0) {
-                                result = sortTwoLists(ascOrder, result, temp);
-                                temp = new ArrayList<>();
-                            }
-                            temp.add(line);
+                    if (!temp.isEmpty()) {
+                        if (temp.get(temp.size() - 1).compareTo(line) * switchOrder > 0) {
+                            result = sortTwoLists(ascOrder, result, temp);
+                            temp = new ArrayList<>();
                         }
-                        line = reader.readLine();
+                    }
+                    temp.add(line);
+                    line = reader.readLine();
                 }
             }
         } catch (IOException p) {
