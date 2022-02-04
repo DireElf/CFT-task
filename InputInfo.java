@@ -27,7 +27,6 @@ public class InputInfo {
 
     public static Boolean isInputValid(String[] arguments) {
         boolean result = true;
-
         if (arguments.length == 0) {
             System.out.println("No arguments");
             return false;
@@ -41,7 +40,6 @@ public class InputInfo {
                 return false;
             }
         }
-
         int firstPathPosition = arguments[0].equals("-d") || arguments[0].equals("-a") ? 2 : 1;
         if (firstPathPosition == arguments.length) {
             System.out.println("Output file is unavailable");
