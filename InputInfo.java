@@ -7,8 +7,8 @@ public class InputInfo {
     private boolean ascOrder;
     private boolean dataTypeInt;
     private String[] pathsToFiles;
-    private int firstPathPosition;
-    private String pathToOutput;
+    int firstPathPosition;
+    String pathToOutput;
 
     public InputInfo(String[] args) {
         this.ascOrder = !args[0].equals("-d");
