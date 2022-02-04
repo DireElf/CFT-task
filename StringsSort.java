@@ -68,18 +68,6 @@ public class StringsSort {
         }
         return result;
     }
-
-    static void writeListToFile(ArrayList<String> list, String destination) {
-        File file = new File(destination);
-        try (FileWriter writer = new FileWriter(file)) {
-            for (String line : list) {
-                writer.write(line + System.getProperty("line.separator"));
-            }
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
 
 

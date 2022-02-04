@@ -73,16 +73,4 @@ public class NumbersSort {
         }
         return result;
     }
-
-    static void writeListToFile(ArrayList<Integer> list, String destination) {
-        File file = new File(destination);
-        try (FileWriter writer = new FileWriter(file)) {
-            for (Integer number : list) {
-                writer.write(number + System.getProperty("line.separator"));
-            }
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
