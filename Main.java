@@ -2,13 +2,14 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
-
     public static void main(String[] args) {
         if (!InputInfo.isInputValid(args)) return;
         InputInfo info = new InputInfo(args);
         ArrayList<String> sortedStrings = new ArrayList<>();
         for (String path : info.getPathsToFiles()) {
-            sortedStrings = sortTwoLists(info.isAscOrder(), info.isDataTypeInt(), sortedStrings, readAndSort(info.isAscOrder(), info.isDataTypeInt(), path));
+            boolean ascOrder = info.isAscOrder();
+            boolean hasInt = info.isDataTypeInt();
+            sortedStrings = sortTwoLists(ascOrder, hasInt, sortedStrings, readAndSort(ascOrder, hasInt, path));
         }
         File file = new File(info.getPathToOutput());
         try (
