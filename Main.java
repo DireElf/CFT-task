@@ -13,7 +13,7 @@ public class Main {
         }
         File file = new File(info.getPathToOutput());
         try (
-                FileWriter writer = new FileWriter(file)) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (String line : sortedStrings) {
                 writer.write(line + System.getProperty("line.separator"));
             }
@@ -66,9 +66,7 @@ public class Main {
         int switchOrder = ascOrder ? 1 : -1;
         ArrayList<String> result = new ArrayList<>();
         ArrayList<String> temp = new ArrayList<>();
-        try {
-            FileReader fileReader = new FileReader(inputFile);
-            BufferedReader reader = new BufferedReader(fileReader);
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))){
             String line = reader.readLine();
             if (!dataTypeInt) {
                 while (true) {
