@@ -4,10 +4,10 @@ import java.nio.file.Paths;
 
 public class InputInfo {
 
-    private boolean ascOrder;
-    private boolean dataTypeInt;
-    private String[] pathsToFiles;
-    private String pathToOutput;
+    private final boolean ascOrder;
+    private final boolean dataTypeInt;
+    private final String[] pathsToFiles;
+    private final String pathToOutput;
 
     public InputInfo(String[] args) {
         this.ascOrder = !args[0].equals("-d");
@@ -74,21 +74,5 @@ public class InputInfo {
     }
     public String getPathToOutput() {
         return pathToOutput;
-    }
-    // setters
-    public void setAscOrder(boolean ascOrder) {
-        this.ascOrder = ascOrder;
-    }
-
-    public void setDataTypeInt(boolean dataTypeInt) {
-        this.dataTypeInt = dataTypeInt;
-    }
-
-    public void setPathsToFiles(String[] pathsToFiles) {
-        this.pathsToFiles = pathsToFiles;
-    }
-
-    public void setPathToOutput(String pathToOutput) {
-        this.pathToOutput = pathToOutput;
     }
 }
