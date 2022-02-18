@@ -29,13 +29,13 @@ public class MergeSort {
         int count1 = 0;
         int count2 = 0;
         while (true) {
-            boolean list1Processed = count1 == list1.size();
-            boolean list2Processed = count2 == list2.size();
-            if (list1Processed && list2Processed) break;
+            boolean list1Ended = count1 == list1.size();
+            boolean list2Ended = count2 == list2.size();
+            if (list1Ended && list2Ended) break;
             else {
-                if (list2Processed) {
+                if (list2Ended) {
                     result.add(list1.get(count1++));
-                } else if (list1Processed) {
+                } else if (list1Ended) {
                     result.add(list2.get(count2++));
                 } else {
                     if (!dataTypeInt) {
@@ -66,41 +66,27 @@ public class MergeSort {
         ArrayList<String> temp = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             String line = reader.readLine();
-            if (!dataTypeInt) {
-                while (true) {
-                    if (line == null) {
-                        if (!temp.isEmpty()) {
-                            result = sortTwoLists(result, temp);
-                            break;
-                        }
-                    } else {
-                        if (line.isEmpty()) {
-                            line = reader.readLine();
-                            continue;
-                        }
-                        if (!temp.isEmpty()) {
-                            if (temp.get(temp.size() - 1).compareTo(line) * switchOrder > 0) {
-                                result = sortTwoLists(result, temp);
-                                temp = new ArrayList<>();
-                            }
-                        }
-                        temp.add(line);
-                        line = reader.readLine();
+            while (true) {
+                if (line == null) {
+                    if (!temp.isEmpty()) {
+                        result = sortTwoLists(result, temp);
+                        break;
                     }
-                }
-            } else {
-                while (true) {
-                    if (line == null) {
-                        if (!temp.isEmpty()) {
-                            result = sortTwoLists(result, temp);
-                            break;
-                        }
-                    } else {
-                        if (line.isEmpty()) {
-                            line = reader.readLine();
-                            continue;
-                        }
-                        try {
+                } else {
+                    if (line.isEmpty()) {
+                        line = reader.readLine();
+                        continue;
+                    }
+                    try {
+                        if (!dataTypeInt) {
+                            if (!temp.isEmpty()) {
+                                if (temp.get(temp.size() - 1).compareTo(line) * switchOrder > 0) {
+                                    result = sortTwoLists(result, temp);
+                                    temp = new ArrayList<>();
+                                }
+                            }
+                            temp.add(line);
+                        } else {
                             if (temp.isEmpty()) {
                                 temp.add(Integer.parseInt(line) + "");
                             } else {
@@ -112,10 +98,10 @@ public class MergeSort {
                                 }
                                 temp.add(number + "");
                             }
-                            line = reader.readLine();
-                        } catch (NumberFormatException e) {
-                            line = reader.readLine();
                         }
+                        line = reader.readLine();
+                    } catch (NumberFormatException e) {
+                        line = reader.readLine();
                     }
                 }
             }
