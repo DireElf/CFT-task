@@ -18,7 +18,7 @@ public class MergeSort {
     protected ArrayList<String> mergeSort() {
         ArrayList<String> result = new ArrayList<>();
         for (String path : pathsToFiles) {
-            result = sortTwoLists(result, readAndSort(path));
+            result = sortTwoLists(result, getSortedListFromFile(path));
         }
         return result;
     }
@@ -59,7 +59,7 @@ public class MergeSort {
         return result;
     }
 
-    private ArrayList<String> readAndSort(String path) {
+    private ArrayList<String> getSortedListFromFile(String path) {
         File inputFile = new File(path);
         int switchOrder = ascOrder ? 1 : -1;
         ArrayList<String> result = new ArrayList<>();
